@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Serif+SC:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Serif+SC:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,6 +6,10 @@
 
 @layer base {
   :root {
+    --paper: #f5efe4;
+    --ink: #101419;
+    --muted: #5f625f;
+    --accent: #176157;
     color-scheme: light;
   }
 
@@ -14,15 +18,29 @@
   }
 
   body {
-    @apply m-0 min-h-screen bg-[#edf0e8] font-sans text-slate-900 antialiased;
+    @apply m-0 min-h-screen font-sans antialiased;
+    background:
+      radial-gradient(circle at top left, rgba(23, 97, 87, 0.06), transparent 26%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.35), rgba(245, 239, 228, 0.98)),
+      var(--paper);
+    color: var(--ink);
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
     background-image:
-      radial-gradient(circle at top left, rgba(45, 212, 191, 0.08), transparent 28%),
-      radial-gradient(circle at 90% 12%, rgba(59, 130, 246, 0.08), transparent 24%),
-      linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(237, 240, 232, 0.96));
+      linear-gradient(rgba(16, 20, 25, 0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(16, 20, 25, 0.025) 1px, transparent 1px);
+    background-size: 40px 40px;
+    mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.5), transparent 82%);
   }
 
   a {
-    @apply no-underline;
+    color: inherit;
+    text-decoration: none;
   }
 
   * {
@@ -30,15 +48,8 @@
   }
 
   ::selection {
-    background: rgba(23, 102, 93, 0.18);
-    color: #0f172a;
-  }
-}
-
-@layer components {
-  .section-shell {
-    @apply relative overflow-hidden rounded-[32px] border border-white/70 bg-white/80 backdrop-blur-xl;
-    box-shadow: 0 30px 90px rgba(15, 23, 42, 0.08);
+    background: rgba(23, 97, 87, 0.14);
+    color: #101419;
   }
 }
 
@@ -60,15 +71,15 @@
 }
 
 body::-webkit-scrollbar {
-  width: 11px;
+  width: 10px;
 }
 
 body::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, rgba(15, 23, 42, 0.28), rgba(23, 102, 93, 0.42));
+  background: rgba(16, 20, 25, 0.28);
   border-radius: 999px;
-  border: 2px solid rgba(237, 240, 232, 0.95);
+  border: 2px solid rgba(245, 239, 228, 0.95);
 }
 
 body::-webkit-scrollbar-track {
-  background: rgba(237, 240, 232, 0.95);
+  background: rgba(245, 239, 228, 0.95);
 }
