@@ -1,15 +1,35 @@
 {
   "version": 1,
   "skills": {
+    "accessibility-audit": {
+      "source": "webflow/webflow-skills",
+      "sourceType": "github",
+      "computedHash": "d76f378083037b87b644c401f85a5715b54982243f45238e13c0d0f82794c869"
+    },
+    "framer-motion-animator": {
+      "source": "patricio0312rev/skills",
+      "sourceType": "github",
+      "computedHash": "d0137ba04049bf8926bc80f6a5e2b82d94b5633b6445a85dbfb26ab4f1b104c6"
+    },
     "frontend-design-ultimate": {
       "source": "kesslerio/frontend-design-ultimate-clawhub-skill",
       "sourceType": "github",
       "computedHash": "4afb770ed28de2b9c675304536270f83f7cee97364c797bfe52f8866b231bbea"
     },
+    "gh-pages-deploy": {
+      "source": "aviz85/claude-skills-library",
+      "sourceType": "github",
+      "computedHash": "3784f19f2cc74fce278757e9a4b20d57b59b3d924a662435620062f80b27117c"
+    },
     "magic-portfolio": {
       "source": "eng0ai/eng0-template-skills",
       "sourceType": "github",
       "computedHash": "4b30a2f15514ede76a302e316a3328d0ad283feb919652b032d86741a92b10eb"
+    },
+    "tailwindcss-advanced-design-systems": {
+      "source": "josiahsiegel/claude-plugin-marketplace",
+      "sourceType": "github",
+      "computedHash": "96736c88b894cfe09708817f7fde5945aebfc0c2cb17d54f8b066d1a0b36be0a"
     }
   }
 }

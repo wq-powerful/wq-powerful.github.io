@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Serif+SC:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,36 +6,71 @@
 
 @layer base {
   :root {
-    --paper: #f5efe4;
-    --ink: #101419;
-    --muted: #5f625f;
-    --accent: #176157;
-    color-scheme: light;
+    --cyber-bg: #0a0514;
+    --cyber-bg-secondary: #1a0f2e;
+    --cyber-bg-card: #1e1433;
+    --cyber-purple: #8b5cf6;
+    --cyber-cyan: #06b6d4;
+    --cyber-green: #10b981;
+    --cyber-pink: #ec4899;
+    --cyber-text: #e0e7ff;
+    --cyber-text-secondary: #a78bfa;
+    color-scheme: dark;
   }
 
   html {
     scroll-behavior: smooth;
   }
 
-  body {
-    @apply m-0 min-h-screen font-sans antialiased;
-    background:
-      radial-gradient(circle at top left, rgba(23, 97, 87, 0.06), transparent 26%),
-      linear-gradient(180deg, rgba(255, 255, 255, 0.35), rgba(245, 239, 228, 0.98)),
-      var(--paper);
-    color: var(--ink);
+  /* Respect user's motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 
+  body {
+    @apply m-0 min-h-screen font-sans antialiased;
+    background: var(--cyber-bg);
+    color: var(--cyber-text);
+    overflow-x: hidden;
+  }
+
+  /* 流体渐变背景 */
   body::before {
     content: '';
     position: fixed;
     inset: 0;
     pointer-events: none;
+    z-index: 0;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(6, 182, 212, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
+    animation: gradient-shift 15s ease infinite;
+    background-size: 200% 200%;
+    will-change: background-position;
+  }
+
+  /* 网格纹理 */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
     background-image:
-      linear-gradient(rgba(16, 20, 25, 0.025) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(16, 20, 25, 0.025) 1px, transparent 1px);
-    background-size: 40px 40px;
-    mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.5), transparent 82%);
+      linear-gradient(rgba(139, 92, 246, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(139, 92, 246, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.3), transparent 70%);
   }
 
   a {
@@ -43,22 +78,63 @@
     text-decoration: none;
   }
 
+  /* Focus styles for accessibility */
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid var(--cyber-cyan);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
   * {
     box-sizing: border-box;
   }
 
   ::selection {
-    background: rgba(23, 97, 87, 0.14);
-    color: #101419;
+    background: rgba(139, 92, 246, 0.3);
+    color: var(--cyber-text);
   }
 }
 
+/* 玻璃态效果 */
+@layer components {
+  .glass {
+    background: rgba(30, 20, 51, 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(139, 92, 246, 0.2);
+  }
+
+  .glass-strong {
+    background: rgba(30, 20, 51, 0.8);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+  }
+
+  .glow-text {
+    text-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+  }
+
+  .glow-border {
+    box-shadow:
+      0 0 20px rgba(139, 92, 246, 0.3),
+      inset 0 0 20px rgba(139, 92, 246, 0.1);
+  }
+
+  .neon-glow {
+    box-shadow:
+      0 0 10px rgba(139, 92, 246, 0.5),
+      0 0 20px rgba(139, 92, 246, 0.3),
+      0 0 30px rgba(6, 182, 212, 0.2);
+  }
+}
+
+/* 滚动动画 */
 [data-reveal] {
   opacity: 0;
-  transform: translateY(30px);
+  transform: translateY(40px);
   transition:
-    opacity 0.72s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.72s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 [data-reveal].is-visible {
@@ -68,18 +144,50 @@
 
 #root {
   min-height: 100vh;
+  position: relative;
+  z-index: 2;
 }
 
+/* 自定义滚动条 */
 body::-webkit-scrollbar {
-  width: 10px;
+  width: 12px;
 }
 
 body::-webkit-scrollbar-thumb {
-  background: rgba(16, 20, 25, 0.28);
+  background: linear-gradient(180deg, var(--cyber-purple), var(--cyber-cyan));
   border-radius: 999px;
-  border: 2px solid rgba(245, 239, 228, 0.95);
+  border: 2px solid var(--cyber-bg);
 }
 
 body::-webkit-scrollbar-track {
-  background: rgba(245, 239, 228, 0.95);
+  background: var(--cyber-bg-secondary);
+}
+
+/* 鼠标光标效果 */
+.cursor-glow {
+  pointer-events: none;
+  position: fixed;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  transition: opacity 0.3s ease;
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Performance optimization */
+@media (prefers-reduced-motion: no-preference) {
+  .cursor-glow {
+    will-change: transform;
+  }
 }
