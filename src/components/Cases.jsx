@@ -1,5 +1,12 @@
-import { motion } from 'framer-motion'
-import { ArrowUpRight } from 'lucide-react'
+import { motion, useInView } from 'framer-motion'
+import { ArrowUpRight, Zap, Target, Lightbulb } from 'lucide-react'
+import { useRef } from 'react'
+
+const icons = {
+  '01': Zap,
+  '02': Target,
+  '03': Lightbulb,
+}
 
 const cases = [
   {
@@ -35,15 +42,23 @@ const cases = [
 ]
 
 export function Cases() {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: '-100px' })
+
   return (
-    <section id="work" className="relative py-20 lg:py-24 px-6 bg-portfolio-bg" aria-labelledby="cases-heading">
-      <div className="max-w-5xl mx-auto">
+    <section id="work" className="relative py-20 lg:py-24 px-6 bg-portfolio-bg overflow-hidden" aria-labelledby="cases-heading" ref={ref}>
+      {/* 背景装饰 */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/4 left-0 w-72 h-72 bg-gradient-to-br from-blue-400/10 to-cyan-500/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-0 w-72 h-72 bg-gradient-to-br from-cyan-400/10 to-teal-500/10 rounded-full blur-3xl" />
+      </div>
+
+      <div className="max-w-5xl mx-auto relative z-10">
         {/* Section 标题 */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
           className="mb-16"
         >
           <h2 className="text-section font-semibold text-portfolio-text mb-4" id="cases-heading">
@@ -56,85 +71,128 @@ export function Cases() {
 
         {/* 项目卡片列表 */}
         <div className="space-y-8">
-          {cases.map((caseItem, index) => (
-            <motion.article
-              key={caseItem.number}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="bg-portfolio-card rounded-2xl p-8 lg:p-10 shadow-soft border border-portfolio-border hover:shadow-soft-md transition-shadow duration-300"
-            >
-              {/* 卡片头部 */}
-              <div className="flex items-start justify-between mb-6">
-                <div className="flex-1">
-                  <div className="flex items-center gap-3 mb-3">
-                    <span className="text-sm font-medium text-portfolio-text-muted">
-                      Case {caseItem.number}
-                    </span>
-                    <div className="flex gap-2">
-                      {caseItem.tags.map((tag, i) => (
-                        <span
-                          key={i}
-                          className="px-3 py-1 bg-portfolio-accent/10 text-portfolio-accent text-xs font-medium rounded-full"
+          {cases.map((caseItem, index) => {
+            const Icon = icons[caseItem.number]
+            return (
+              <motion.article
+                key={caseItem.number}
+                initial={{ opacity: 0, y: 30 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.8, delay: index * 0.15 }}
+                whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                className="group relative bg-portfolio-card rounded-2xl p-8 lg:p-10 shadow-soft border border-portfolio-border hover:shadow-2xl hover:border-portfolio-accent/30 transition-all duration-300 overflow-hidden"
+              >
+                {/* 悬停时的背景渐变 */}
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 to-blue-500/0 group-hover:from-cyan-500/5 group-hover:to-blue-500/5 transition-all duration-500" />
+
+                {/* 装饰线条 */}
+                <motion.div
+                  className="absolute top-0 left-0 w-1 h-0 bg-gradient-to-b from-cyan-500 to-blue-500"
+                  whileHover={{ height: '100%' }}
+                  transition={{ duration: 0.3 }}
+                />
+
+                <div className="relative z-10">
+                  {/* 卡片头部 */}
+                  <div className="flex items-start justify-between mb-6">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3 mb-3">
+                        {/* 图标 */}
+                        <motion.div
+                          whileHover={{ rotate: 360, scale: 1.1 }}
+                          transition={{ duration: 0.5 }}
+                          className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center text-white shadow-lg"
                         >
-                          {tag}
+                          <Icon className="w-6 h-6" />
+                        </motion.div>
+
+                        <span className="text-sm font-medium text-portfolio-text-muted">
+                          Case {caseItem.number}
                         </span>
-                      ))}
-                    </div>
-                  </div>
-                  <h3 className="text-section-sm font-semibold text-portfolio-text mb-2">
-                    {caseItem.title}
-                  </h3>
-                  <p className="text-body text-portfolio-text-secondary">
-                    {caseItem.subtitle}
-                  </p>
-                </div>
-              </div>
 
-              {/* 项目详情 */}
-              <div className="grid md:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <div className="text-body-sm font-semibold text-portfolio-text-muted mb-2">
-                    挑战
+                        <div className="flex gap-2">
+                          {caseItem.tags.map((tag, i) => (
+                            <motion.span
+                              key={i}
+                              initial={{ opacity: 0, scale: 0.8 }}
+                              animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                              transition={{ delay: index * 0.15 + i * 0.05 }}
+                              whileHover={{ scale: 1.05 }}
+                              className="px-3 py-1 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 text-portfolio-accent text-xs font-medium rounded-full border border-cyan-500/20"
+                            >
+                              {tag}
+                            </motion.span>
+                          ))}
+                        </div>
+                      </div>
+                      <h3 className="text-section-sm font-semibold text-portfolio-text mb-2 group-hover:text-portfolio-accent transition-colors">
+                        {caseItem.title}
+                      </h3>
+                      <p className="text-body text-portfolio-text-secondary">
+                        {caseItem.subtitle}
+                      </p>
+                    </div>
                   </div>
-                  <p className="text-body text-portfolio-text-secondary leading-relaxed">
-                    {caseItem.challenge}
-                  </p>
-                </div>
-                <div>
-                  <div className="text-body-sm font-semibold text-portfolio-text-muted mb-2">
-                    方案
-                  </div>
-                  <p className="text-body text-portfolio-text-secondary leading-relaxed">
-                    {caseItem.solution}
-                  </p>
-                </div>
-              </div>
 
-              {/* 成果和洞察 */}
-              <div className="pt-6 border-t border-portfolio-border-light">
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                  <div>
-                    <div className="text-body-sm font-semibold text-portfolio-text-muted mb-1">
-                      成果
-                    </div>
-                    <p className="text-body font-medium text-portfolio-accent">
-                      {caseItem.result}
-                    </p>
+                  {/* 项目详情 */}
+                  <div className="grid md:grid-cols-2 gap-6 mb-6">
+                    <motion.div
+                      whileHover={{ x: 5 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <div className="text-body-sm font-semibold text-portfolio-text-muted mb-2 flex items-center gap-2">
+                        <div className="w-1 h-4 bg-gradient-to-b from-cyan-500 to-blue-500 rounded-full" />
+                        挑战
+                      </div>
+                      <p className="text-body text-portfolio-text-secondary leading-relaxed">
+                        {caseItem.challenge}
+                      </p>
+                    </motion.div>
+                    <motion.div
+                      whileHover={{ x: 5 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <div className="text-body-sm font-semibold text-portfolio-text-muted mb-2 flex items-center gap-2">
+                        <div className="w-1 h-4 bg-gradient-to-b from-cyan-500 to-blue-500 rounded-full" />
+                        方案
+                      </div>
+                      <p className="text-body text-portfolio-text-secondary leading-relaxed">
+                        {caseItem.solution}
+                      </p>
+                    </motion.div>
                   </div>
-                  <div className="md:text-right">
-                    <div className="text-body-sm font-semibold text-portfolio-text-muted mb-1">
-                      我的判断
+
+                  {/* 成果和洞察 */}
+                  <div className="pt-6 border-t border-portfolio-border-light">
+                    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                      <motion.div
+                        whileHover={{ scale: 1.02 }}
+                        className="flex-1"
+                      >
+                        <div className="text-body-sm font-semibold text-portfolio-text-muted mb-1">
+                          成果
+                        </div>
+                        <p className="text-body font-medium bg-gradient-to-r from-cyan-600 to-blue-600 bg-clip-text text-transparent">
+                          {caseItem.result}
+                        </p>
+                      </motion.div>
+                      <motion.div
+                        whileHover={{ scale: 1.02 }}
+                        className="md:text-right flex-1"
+                      >
+                        <div className="text-body-sm font-semibold text-portfolio-text-muted mb-1">
+                          我的判断
+                        </div>
+                        <p className="text-body text-portfolio-text-secondary italic">
+                          {caseItem.insight}
+                        </p>
+                      </motion.div>
                     </div>
-                    <p className="text-body text-portfolio-text-secondary italic">
-                      {caseItem.insight}
-                    </p>
                   </div>
                 </div>
-              </div>
-            </motion.article>
-          ))}
+              </motion.article>
+            )
+          })}
         </div>
 
         {/* 其他项目经验 */}
