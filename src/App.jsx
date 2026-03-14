@@ -19,7 +19,7 @@ function useReveal() {
           }
         })
       },
-      { threshold: 0.14, rootMargin: '0px 0px -12% 0px' },
+      { threshold: 0.25, rootMargin: '0px 0px -100px 0px' },
     )
 
     nodes.forEach((node) => observer.observe(node))

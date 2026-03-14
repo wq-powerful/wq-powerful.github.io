@@ -7,35 +7,13 @@ const profilePhoto = '/assets/profile-photo.jpg'
 export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* 背景装饰 */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          className="absolute top-1/4 -left-20 w-96 h-96 bg-cyber-purple/20 rounded-full blur-3xl"
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.5, 0.3],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-        />
-        <motion.div
-          className="absolute bottom-1/4 -right-20 w-96 h-96 bg-cyber-cyan/20 rounded-full blur-3xl"
-          animate={{
-            scale: [1.2, 1, 1.2],
-            opacity: [0.5, 0.3, 0.5],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-        />
+      {/* 简化背景装饰 - 移除动画 */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 -left-20 w-96 h-96 bg-cyber-purple/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-cyber-cyan/10 rounded-full blur-3xl" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-20">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-16">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* 左侧内容 */}
           <div>
@@ -53,13 +31,13 @@ export function Hero() {
 
             <AnimatedText
               text="更接近业务现场的"
-              className="font-display text-5xl md:text-7xl font-bold mb-4"
+              className="font-display text-3xl md:text-5xl font-bold mb-3 leading-tight"
               delay={0.2}
             />
 
             <AnimatedText
               text="AI 产品经理候选人"
-              className="font-display text-5xl md:text-7xl font-bold glow-text"
+              className="font-display text-3xl md:text-5xl font-bold glow-text leading-tight"
               gradient={true}
               delay={0.4}
             />
@@ -67,8 +45,8 @@ export function Hero() {
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="mt-6 text-lg text-cyber-text-secondary max-w-xl leading-relaxed"
+              transition={{ duration: 0.4, delay: 0.6 }}
+              className="mt-4 text-base text-cyber-text-secondary max-w-lg leading-normal"
             >
               我没有把简历直接搬上网页，而是把交付现场、需求整理、培训赋能和 AI
               提效实践压缩成一个更像产品表达的长页面。
@@ -104,8 +82,8 @@ export function Hero() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1 }}
-              className="mt-12 grid grid-cols-3 gap-4"
+              transition={{ duration: 0.4, delay: 0.8 }}
+              className="mt-8 grid grid-cols-3 gap-4"
             >
               {[
                 { value: '1+', label: '年经验' },
@@ -137,31 +115,15 @@ export function Hero() {
                 className="w-full aspect-[4/5] object-cover rounded-2xl"
               />
 
-              {/* 浮动标签 */}
-              <motion.div
-                className="absolute -top-4 -right-4 glass px-4 py-2 rounded-full"
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 3, repeat: Infinity }}
-              >
+              {/* 简化浮动标签 - 移除动画 */}
+              <div className="absolute -top-4 -right-4 glass px-4 py-2 rounded-full">
                 <span className="text-sm font-mono text-cyber-cyan">Olivia Wu</span>
-              </motion.div>
+              </div>
 
-              <motion.div
-                className="absolute -bottom-4 -left-4 glass px-4 py-2 rounded-full"
-                animate={{ y: [0, 10, 0] }}
-                transition={{ duration: 3, repeat: Infinity, delay: 1.5 }}
-              >
+              <div className="absolute -bottom-4 -left-4 glass px-4 py-2 rounded-full">
                 <span className="text-sm font-mono text-cyber-green">吴倩</span>
-              </motion.div>
+              </div>
             </div>
-
-            {/* 装饰圆环 */}
-            <motion.div
-              className="absolute -z-10 inset-0 border-2 border-cyber-purple/30 rounded-3xl"
-              animate={{ rotate: 360 }}
-              transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-              style={{ scale: 1.1 }}
-            />
           </motion.div>
         </div>
 

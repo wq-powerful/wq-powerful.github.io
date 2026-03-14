@@ -146,7 +146,7 @@ function CaseVisual({ type, result, color }) {
 
 export function Cases() {
   return (
-    <section id="work" className="relative py-32 px-6">
+    <section id="work" className="relative py-16 md:py-20 px-6">
       <div className="max-w-7xl mx-auto">
         {/* 标题 */}
         <motion.div

@@ -25,9 +25,9 @@ const evidencePoints = [
 
 export function About() {
   return (
-    <section id="statement" className="relative py-32 px-6">
+    <section id="statement" className="relative py-16 md:py-20 px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
+        <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-start">
           {/* 左侧标题 */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -38,9 +38,9 @@ export function About() {
             <span className="inline-block font-mono text-sm text-cyber-cyan uppercase tracking-wider mb-4">
               Positioning
             </span>
-            <h2 className="font-display text-5xl md:text-6xl font-bold leading-tight">
+            <h2 className="font-display text-3xl md:text-4xl font-bold leading-tight">
               我更擅长的，不是写一份漂亮简历，
-              <span className="block mt-2 bg-gradient-to-r from-cyber-purple via-cyber-cyan to-cyber-green bg-clip-text text-transparent">
+              <span className="block mt-2 text-cyber-cyan">
                 而是把零散经验压成一条清晰路径。
               </span>
             </h2>

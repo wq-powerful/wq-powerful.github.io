@@ -29,7 +29,7 @@ const aiRepoUrl = 'https://github.com/wq-powerful/work-ai-assistant'
 
 export function Method() {
   return (
-    <section id="method" className="relative py-32 px-6">
+    <section id="method" className="relative py-16 md:py-20 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-16">
           {/* 左侧说明 */}
