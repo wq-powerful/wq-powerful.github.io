@@ -2,14 +2,14 @@
 
 > 更接近业务现场的 AI 产品经理候选人
 
-[![部署状态](https://img.shields.io/badge/部署-成功-brightgreen)](https://wq-powerful.github.io/wq-powerful.github.io/)
+[![部署状态](https://img.shields.io/badge/部署-成功-brightgreen)](https://wq-powerful.github.io/)
 [![React](https://img.shields.io/badge/React-19.2-61dafb?logo=react)](https://react.dev/)
 [![Vite](https://img.shields.io/badge/Vite-8.0-646cff?logo=vite)](https://vitejs.dev/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38bdf8?logo=tailwindcss)](https://tailwindcss.com/)
 
 ## 🌐 在线访问
 
-**网站地址：** [https://wq-powerful.github.io/wq-powerful.github.io/](https://wq-powerful.github.io/wq-powerful.github.io/)
+**网站地址：** [https://wq-powerful.github.io/](https://wq-powerful.github.io/)
 
 ## ✨ 项目特色
 
