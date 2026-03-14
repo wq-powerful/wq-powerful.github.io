@@ -1,5 +1,4 @@
-import { motion, useInView } from 'framer-motion'
-import { useRef } from 'react'
+import { motion } from 'framer-motion'
 import { Briefcase, MessageSquare, Sparkles } from 'lucide-react'
 
 const icons = {
@@ -27,71 +26,41 @@ const strengths = [
 ]
 
 export function About() {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-100px' })
-
   return (
-    <section id="statement" className="relative py-20 lg:py-24 px-6 bg-portfolio-bg-secondary overflow-hidden" aria-labelledby="about-heading" ref={ref}>
-      {/* 背景装饰 */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/3 -right-20 w-96 h-96 bg-gradient-to-br from-purple-400/10 to-pink-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/3 -left-20 w-96 h-96 bg-gradient-to-br from-blue-400/10 to-cyan-500/10 rounded-full blur-3xl" />
-      </div>
-
-      <div className="max-w-4xl mx-auto relative z-10">
-        {/* Section 标题 */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="mb-12"
-        >
-          <h2 className="text-section font-semibold text-portfolio-text mb-4" id="about-heading">
+    <section id="statement" className="relative py-16 px-6 bg-slate-50" aria-labelledby="about-heading">
+      <div className="max-w-4xl mx-auto">
+        {/* 标题 */}
+        <div className="mb-10">
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-3" id="about-heading">
             把零散经验压成清晰路径
           </h2>
-          <p className="text-body-lg text-portfolio-text-secondary">
+          <p className="text-lg text-slate-600">
             我更擅长的，不是写一份漂亮简历，而是在业务现场中提炼可复用的产品方法论
           </p>
-        </motion.div>
+        </div>
 
-        {/* 优势列表 - 增强版 */}
-        <div className="space-y-6">
+        {/* 优势列表 */}
+        <div className="space-y-5">
           {strengths.map((strength, index) => {
             const Icon = icons[index]
             return (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, x: -30 }}
-                animate={isInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.8, delay: index * 0.15 }}
-                whileHover={{ x: 10, transition: { duration: 0.3 } }}
-                className="group relative bg-portfolio-card rounded-xl p-6 lg:p-8 shadow-soft border border-portfolio-border hover:shadow-xl hover:border-portfolio-accent/30 transition-all duration-300 overflow-hidden"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-50px' }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="group bg-white rounded-xl p-6 border-2 border-slate-200 hover:border-cyan-300 hover:shadow-md transition-all duration-300"
               >
-                {/* 悬停背景效果 */}
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/0 to-blue-500/0 group-hover:from-cyan-500/5 group-hover:to-blue-500/5 transition-all duration-500" />
-
-                {/* 左侧装饰线 */}
-                <motion.div
-                  className="absolute left-0 top-0 w-1 h-0 bg-gradient-to-b from-cyan-500 to-blue-500"
-                  whileHover={{ height: '100%' }}
-                  transition={{ duration: 0.3 }}
-                />
-
-                <div className="relative z-10 flex items-start gap-4">
-                  {/* 图标 */}
-                  <motion.div
-                    whileHover={{ rotate: 360, scale: 1.1 }}
-                    transition={{ duration: 0.5 }}
-                    className="flex-shrink-0 w-12 h-12 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center text-white shadow-lg"
-                  >
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center text-white">
                     <Icon className="w-6 h-6" />
-                  </motion.div>
-
+                  </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-semibold text-portfolio-text mb-3 group-hover:text-portfolio-accent transition-colors">
+                    <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-cyan-600 transition-colors">
                       {strength.title}
                     </h3>
-                    <p className="text-body text-portfolio-text-secondary leading-relaxed">
+                    <p className="text-sm text-slate-600 leading-relaxed">
                       {strength.description}
                     </p>
                   </div>
@@ -101,43 +70,25 @@ export function About() {
           })}
         </div>
 
-        {/* 工作流程 - 增强版 */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="mt-12 glass-card rounded-xl p-6 lg:p-8 shadow-xl"
-        >
-          <h3 className="text-xl font-semibold text-portfolio-text mb-6 flex items-center gap-2">
-            <div className="w-1 h-6 bg-gradient-to-b from-cyan-500 to-blue-500 rounded-full" />
+        {/* 工作流程 */}
+        <div className="mt-10 bg-white rounded-xl p-6 border border-slate-200">
+          <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+            <div className="w-1 h-5 bg-gradient-to-b from-cyan-500 to-blue-500 rounded-full" />
             工作流程
           </h3>
           <div className="flex flex-wrap items-center gap-3">
             {['业务现场', '结构化需求', 'AI 快速验证', '可复用资产'].map((step, index, arr) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ delay: 0.6 + index * 0.1 }}
-                whileHover={{ scale: 1.05, y: -2 }}
-                className="flex items-center gap-3"
-              >
-                <div className="px-4 py-2 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/20 text-portfolio-accent rounded-lg font-medium text-body-sm shadow-sm">
+              <div key={index} className="flex items-center gap-3">
+                <div className="px-4 py-2 bg-cyan-50 border border-cyan-200 text-cyan-700 rounded-lg font-medium text-sm">
                   {step}
                 </div>
                 {index < arr.length - 1 && (
-                  <motion.div
-                    animate={{ x: [0, 5, 0] }}
-                    transition={{ duration: 1.5, repeat: Infinity }}
-                    className="text-portfolio-accent font-bold"
-                  >
-                    →
-                  </motion.div>
+                  <div className="text-cyan-600 font-bold">→</div>
                 )}
-              </motion.div>
+              </div>
             ))}
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   )
