@@ -3,71 +3,100 @@ export default {
   content: ['./index.html', './src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
+      // Apple 风格字体系统 - 使用系统字体
       fontFamily: {
-        sans: ['"Plus Jakarta Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        display: ['"Space Grotesk"', '"Noto Serif SC"', 'Georgia', 'serif'],
-        mono: ['"IBM Plex Mono"', 'ui-monospace', 'monospace'],
+        sans: [
+          '-apple-system',
+          'BlinkMacSystemFont',
+          '"Segoe UI"',
+          'Roboto',
+          '"Helvetica Neue"',
+          'Arial',
+          'sans-serif',
+        ],
+        display: [
+          '-apple-system',
+          'BlinkMacSystemFont',
+          '"Segoe UI"',
+          'Roboto',
+          '"Helvetica Neue"',
+          'Arial',
+          'sans-serif',
+        ],
       },
+      // Apple 风格色彩系统 - 中性色调 + 蓝色强调
       colors: {
-        cyber: {
-          bg: '#0a0514',
-          'bg-secondary': '#1a0f2e',
-          'bg-card': '#1e1433',
-          purple: '#8b5cf6',
-          cyan: '#06b6d4',
-          green: '#10b981',
-          pink: '#ec4899',
-          text: '#e0e7ff',
-          'text-secondary': '#a78bfa',
-          glow: 'rgba(139, 92, 246, 0.5)',
+        apple: {
+          // 主色调
+          white: '#FFFFFF',
+          'gray-50': '#F5F5F7',
+          'gray-100': '#E8E8ED',
+          'gray-200': '#D2D2D7',
+          'gray-300': '#B0B0B5',
+          'gray-400': '#86868B',
+          'gray-500': '#6E6E73',
+          'gray-600': '#515154',
+          'gray-700': '#424245',
+          'gray-800': '#1D1D1F',
+          black: '#000000',
+          // 强调色 - Apple 蓝
+          blue: '#0071E3',
+          'blue-dark': '#0077ED',
+          'blue-light': '#2997FF',
         },
       },
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-cyber': 'linear-gradient(135deg, #8b5cf6 0%, #06b6d4 50%, #10b981 100%)',
-        'gradient-mesh': 'radial-gradient(at 0% 0%, #8b5cf6 0px, transparent 50%), radial-gradient(at 100% 0%, #06b6d4 0px, transparent 50%), radial-gradient(at 100% 100%, #10b981 0px, transparent 50%), radial-gradient(at 0% 100%, #ec4899 0px, transparent 50%)',
+      // Apple 风格字体大小 - 大而清晰
+      fontSize: {
+        // Hero 超大标题
+        'hero': ['80px', { lineHeight: '1.05', letterSpacing: '-0.015em', fontWeight: '700' }],
+        'hero-sm': ['56px', { lineHeight: '1.07', letterSpacing: '-0.01em', fontWeight: '700' }],
+        // Section 标题
+        'section': ['48px', { lineHeight: '1.08', letterSpacing: '-0.003em', fontWeight: '600' }],
+        'section-sm': ['40px', { lineHeight: '1.1', letterSpacing: '-0.002em', fontWeight: '600' }],
+        // Subsection 标题
+        'subsection': ['32px', { lineHeight: '1.125', letterSpacing: '0em', fontWeight: '600' }],
+        // 正文
+        'body-lg': ['21px', { lineHeight: '1.381', letterSpacing: '0.011em', fontWeight: '400' }],
+        'body': ['17px', { lineHeight: '1.47', letterSpacing: '-0.022em', fontWeight: '400' }],
+        'body-sm': ['14px', { lineHeight: '1.43', letterSpacing: '-0.016em', fontWeight: '400' }],
       },
+      // Apple 风格间距系统 - 慷慨的留白
+      spacing: {
+        '18': '4.5rem',   // 72px
+        '22': '5.5rem',   // 88px
+        '26': '6.5rem',   // 104px
+        '30': '7.5rem',   // 120px
+        '34': '8.5rem',   // 136px
+        '38': '9.5rem',   // 152px
+        '42': '10.5rem',  // 168px
+        '46': '11.5rem',  // 184px
+        '50': '12.5rem',  // 200px
+      },
+      // Apple 风格动画 - 微妙流畅
       animation: {
-        'float': 'float 6s ease-in-out infinite',
-        'glow': 'glow 2s ease-in-out infinite alternate',
-        'slide-up': 'slide-up 0.6s ease-out',
-        'slide-down': 'slide-down 0.6s ease-out',
-        'fade-in': 'fade-in 0.6s ease-out',
-        'gradient-shift': 'gradient-shift 8s ease infinite',
-        'pulse-glow': 'pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'fade-in': 'fadeIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+        'slide-up': 'slideUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+        'scale-in': 'scaleIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
       },
       keyframes: {
-        float: {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-20px)' },
-        },
-        glow: {
-          '0%': { boxShadow: '0 0 20px rgba(139, 92, 246, 0.5)' },
-          '100%': { boxShadow: '0 0 40px rgba(139, 92, 246, 0.8), 0 0 60px rgba(6, 182, 212, 0.5)' },
-        },
-        'slide-up': {
-          '0%': { transform: 'translateY(30px)', opacity: '0' },
-          '100%': { transform: 'translateY(0)', opacity: '1' },
-        },
-        'slide-down': {
-          '0%': { transform: 'translateY(-30px)', opacity: '0' },
-          '100%': { transform: 'translateY(0)', opacity: '1' },
-        },
-        'fade-in': {
+        fadeIn: {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' },
         },
-        'gradient-shift': {
-          '0%, 100%': { backgroundPosition: '0% 50%' },
-          '50%': { backgroundPosition: '100% 50%' },
+        slideUp: {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
         },
-        'pulse-glow': {
-          '0%, 100%': { opacity: '1' },
-          '50%': { opacity: '0.5' },
+        scaleIn: {
+          '0%': { opacity: '0', transform: 'scale(0.95)' },
+          '100%': { opacity: '1', transform: 'scale(1)' },
         },
       },
-      backdropBlur: {
-        xs: '2px',
+      // Apple 风格阴影 - 微妙精致
+      boxShadow: {
+        'apple-sm': '0 2px 8px rgba(0, 0, 0, 0.08)',
+        'apple': '0 4px 16px rgba(0, 0, 0, 0.12)',
+        'apple-lg': '0 8px 32px rgba(0, 0, 0, 0.16)',
       },
     },
   },

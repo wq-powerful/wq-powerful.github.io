@@ -5,7 +5,6 @@ import { About } from './components/About'
 import { Cases } from './components/Cases'
 import { Method } from './components/Method'
 import { Contact } from './components/Contact'
-import { CursorGlow } from './components/ui/CursorGlow'
 
 function useReveal() {
   useEffect(() => {
@@ -32,15 +31,12 @@ function App() {
   useReveal()
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden">
-      {/* 鼠标跟随光效 */}
-      <CursorGlow />
-
-      {/* 导航栏 */}
+    <div className="relative min-h-screen overflow-x-hidden bg-apple-white">
+      {/* Apple 风格导航栏 */}
       <Navigation />
 
       {/* 主要内容 */}
-      <main id="top" className="pt-20">
+      <main id="top" className="pt-16">
         <Hero />
         <About />
         <Cases />

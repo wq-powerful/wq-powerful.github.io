@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion'
-import { ArrowUpRight } from 'lucide-react'
 
 const navigation = [
   { id: 'statement', label: '我是谁' },
@@ -11,46 +10,41 @@ const navigation = [
 export function Navigation() {
   return (
     <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6 }}
-      className="fixed top-0 left-0 right-0 z-50 glass-strong border-b border-cyber-purple/20"
+      initial={{ y: -20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+      className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-apple-gray-200"
       role="banner"
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-        {/* Logo */}
+        {/* Apple 风格 Logo - 简洁 */}
         <a href="#top" className="group" aria-label="返回顶部">
-          <p className="font-mono text-xs uppercase tracking-wider text-cyber-text-secondary">
-            Olivia Wu
-          </p>
-          <p className="text-base font-bold group-hover:text-cyber-cyan transition-colors">
-            吴倩 · AI 产品经理候选人
+          <p className="text-body font-semibold text-apple-gray-800 group-hover:text-apple-blue transition-colors">
+            吴倩 · Olivia Wu
           </p>
         </a>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center gap-8" role="navigation" aria-label="主导航">
+        {/* Apple 风格导航 - 简洁链接 */}
+        <nav className="hidden md:flex items-center gap-8" role="navigation" aria-label="主导航">
           {navigation.map((item) => (
             <a
               key={item.id}
               href={`#${item.id}`}
-              className="text-sm font-medium text-cyber-text-secondary hover:text-cyber-cyan transition-colors relative group"
+              className="text-body text-apple-gray-600 hover:text-apple-gray-800 transition-colors"
               aria-label={`跳转到${item.label}部分`}
             >
               {item.label}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-cyber-purple to-cyber-cyan group-hover:w-full transition-all duration-300" aria-hidden="true" />
             </a>
           ))}
         </nav>
 
-        {/* CTA Button */}
+        {/* Apple 风格 CTA - 简洁蓝色按钮 */}
         <a
           href="#contact"
-          className="group inline-flex items-center gap-2 bg-gradient-to-r from-cyber-purple to-cyber-cyan px-5 py-2 rounded-full font-semibold text-white text-sm hover:shadow-lg hover:shadow-cyber-purple/50 transition-all"
+          className="inline-flex items-center gap-2 bg-apple-blue hover:bg-apple-blue-dark px-5 py-2 rounded-full font-semibold text-white text-body-sm transition-all duration-200"
           aria-label="联系我"
         >
           联系我
-          <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" aria-hidden="true" />
         </a>
       </div>
     </motion.header>
