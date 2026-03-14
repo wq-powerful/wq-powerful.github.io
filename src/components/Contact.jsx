@@ -32,8 +32,9 @@ export function Contact() {
           <a
             href="tel:19101469874"
             className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 hover:bg-white/15 transition-all duration-200"
+            aria-label="拨打电话 19101469874"
           >
-            <Phone className="w-8 h-8 text-apple-blue mb-4" />
+            <Phone className="w-8 h-8 text-apple-blue mb-4" aria-hidden="true" />
             <div className="text-body-sm text-apple-gray-300 mb-2">电话</div>
             <div className="text-subsection font-semibold">19101469874</div>
           </a>
@@ -41,8 +42,9 @@ export function Contact() {
           <a
             href="mailto:2541830361@qq.com"
             className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 hover:bg-white/15 transition-all duration-200"
+            aria-label="发送邮件至 2541830361@qq.com"
           >
-            <Mail className="w-8 h-8 text-apple-blue mb-4" />
+            <Mail className="w-8 h-8 text-apple-blue mb-4" aria-hidden="true" />
             <div className="text-body-sm text-apple-gray-300 mb-2">邮箱</div>
             <div className="text-body-lg font-semibold break-all">2541830361@qq.com</div>
           </a>
@@ -64,11 +66,11 @@ export function Contact() {
               <a
                 href="https://github.com/wq-powerful"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="text-apple-gray-300 hover:text-white transition-colors"
-                aria-label="GitHub"
+                aria-label="访问 GitHub 主页"
               >
-                <Github className="w-6 h-6" />
+                <Github className="w-6 h-6" aria-hidden="true" />
               </a>
             </div>
           </div>

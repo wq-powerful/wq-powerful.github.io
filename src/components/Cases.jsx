@@ -36,7 +36,7 @@ const cases = [
 
 export function Cases() {
   return (
-    <section id="work" className="relative py-20 lg:py-24 px-6 bg-portfolio-bg">
+    <section id="work" className="relative py-20 lg:py-24 px-6 bg-portfolio-bg" aria-labelledby="cases-heading">
       <div className="max-w-5xl mx-auto">
         {/* Section 标题 */}
         <motion.div
@@ -46,7 +46,7 @@ export function Cases() {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <h2 className="text-section font-semibold text-portfolio-text mb-4">
+          <h2 className="text-section font-semibold text-portfolio-text mb-4" id="cases-heading">
             项目案例
           </h2>
           <p className="text-body-lg text-portfolio-text-secondary max-w-2xl">

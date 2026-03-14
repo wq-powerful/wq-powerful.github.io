@@ -25,7 +25,7 @@ const methodSteps = [
 
 export function Method() {
   return (
-    <section id="method" className="relative py-32 md:py-40 px-6 bg-apple-gray-50">
+    <section id="method" className="relative py-32 md:py-40 px-6 bg-apple-gray-50" aria-labelledby="method-heading">
       <div className="max-w-5xl mx-auto">
         {/* Apple 风格标题 */}
         <motion.div
@@ -35,7 +35,7 @@ export function Method() {
           transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="text-center mb-20"
         >
-          <h2 className="text-section-sm md:text-section font-semibold text-apple-gray-800 mb-6">
+          <h2 className="text-section-sm md:text-section font-semibold text-apple-gray-800 mb-6" id="method-heading">
             工作方法
           </h2>
           <p className="text-body-lg text-apple-gray-500 max-w-3xl mx-auto">
@@ -88,16 +88,18 @@ export function Method() {
             <a
               href="https://github.com/wq-powerful/work-ai-assistant"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 text-apple-blue hover:text-apple-blue-dark font-semibold transition-colors"
+              aria-label="访问 AI 智能体 GitHub 仓库"
             >
               查看 AI 智能体仓库 →
             </a>
             <a
               href="https://github.com/wq-powerful/wq-powerful.github.io"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 text-apple-blue hover:text-apple-blue-dark font-semibold transition-colors"
+              aria-label="访问网站源代码 GitHub 仓库"
             >
               查看网站源代码 →
             </a>

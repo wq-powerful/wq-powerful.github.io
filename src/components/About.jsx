@@ -20,7 +20,7 @@ const strengths = [
 
 export function About() {
   return (
-    <section id="statement" className="relative py-20 lg:py-24 px-6 bg-portfolio-bg-secondary">
+    <section id="statement" className="relative py-20 lg:py-24 px-6 bg-portfolio-bg-secondary" aria-labelledby="about-heading">
       <div className="max-w-4xl mx-auto">
         {/* Section 标题 */}
         <motion.div
@@ -30,7 +30,7 @@ export function About() {
           transition={{ duration: 0.6 }}
           className="mb-12"
         >
-          <h2 className="text-section font-semibold text-portfolio-text mb-4">
+          <h2 className="text-section font-semibold text-portfolio-text mb-4" id="about-heading">
             把零散经验压成清晰路径
           </h2>
           <p className="text-body-lg text-portfolio-text-secondary">

@@ -5,7 +5,7 @@ const profilePhoto = '/assets/profile-photo.jpg'
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center px-6 py-20 bg-portfolio-bg">
+    <section className="relative min-h-screen flex items-center px-6 py-20 bg-portfolio-bg" aria-label="个人简介">
       <div className="max-w-6xl mx-auto w-full">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* 左侧：个人介绍 */}
@@ -76,12 +76,15 @@ export function Hero() {
             <div className="relative rounded-2xl overflow-hidden shadow-soft-lg">
               <img
                 src={profilePhoto}
-                alt="吴倩 - AI 产品经理"
+                alt="吴倩个人照片 - AI 产品经理，专注于业务现场的产品实践"
                 loading="eager"
+                fetchpriority="high"
+                width="800"
+                height="1067"
                 className="w-full aspect-[3/4] object-cover"
               />
               {/* 柔和的渐变遮罩 */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" aria-hidden="true" />
             </div>
 
             {/* 个人标签 - 更自然的位置 */}
