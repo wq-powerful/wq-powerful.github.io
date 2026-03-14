@@ -1,19 +1,18 @@
-/* Apple 风格全局样式 */
+/* 个人作品集风格全局样式 */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-  /* Apple 风格根变量 */
+  /* 个人作品集根变量 */
   :root {
-    --apple-white: #FFFFFF;
-    --apple-gray-50: #F5F5F7;
-    --apple-gray-800: #1D1D1F;
-    --apple-blue: #0071E3;
+    --portfolio-bg: #FAFAF9;
+    --portfolio-text: #292524;
+    --portfolio-accent: #0891B2;
     color-scheme: light;
   }
 
-  /* 平滑滚动 - 尊重用户偏好 */
+  /* 平滑滚动 */
   html {
     scroll-behavior: auto;
   }
@@ -38,76 +37,73 @@
     }
   }
 
-  /* Apple 风格 body - 简洁纯净 */
+  /* 个人作品集 body - 温暖舒适 */
   body {
     @apply m-0 min-h-screen font-sans antialiased;
-    background: var(--apple-white);
-    color: var(--apple-gray-800);
+    background: var(--portfolio-bg);
+    color: var(--portfolio-text);
     overflow-x: hidden;
   }
-
-  /* 移除所有装饰性背景效果 - Apple 风格极简 */
 
   a {
     color: inherit;
     text-decoration: none;
   }
 
-  /* Apple 风格焦点样式 - 简洁优雅 */
+  /* 个人作品集焦点样式 - 柔和优雅 */
   a:focus-visible,
   button:focus-visible {
-    outline: 2px solid var(--apple-blue);
-    outline-offset: 4px;
-    border-radius: 8px;
+    outline: 2px solid var(--portfolio-accent);
+    outline-offset: 3px;
+    border-radius: 6px;
   }
 
   * {
     box-sizing: border-box;
   }
 
-  /* Apple 风格选择高亮 */
+  /* 个人作品集选择高亮 */
   ::selection {
-    background: rgba(0, 113, 227, 0.2);
-    color: var(--apple-gray-800);
+    background: rgba(8, 145, 178, 0.15);
+    color: var(--portfolio-text);
   }
 }
 
-/* Apple 风格组件类 */
+/* 个人作品集组件类 */
 @layer components {
-  /* 移除所有玻璃态和发光效果 */
-
-  /* Apple 风格按钮 */
-  .btn-apple {
-    @apply inline-flex items-center justify-center px-6 py-3 rounded-full font-semibold transition-all duration-200;
-    background: var(--apple-blue);
+  /* 个人作品集按钮 */
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-lg font-medium transition-all duration-200;
+    background: var(--portfolio-accent);
     color: white;
   }
 
-  .btn-apple:hover {
-    background: #0077ED;
-    transform: scale(1.02);
+  .btn-primary:hover {
+    background: #0E7490;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(8, 145, 178, 0.2);
   }
 
-  .btn-apple-secondary {
-    @apply inline-flex items-center justify-center px-6 py-3 rounded-full font-semibold transition-all duration-200;
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-lg font-medium transition-all duration-200;
     background: transparent;
-    color: var(--apple-blue);
-    border: 1px solid var(--apple-blue);
+    color: var(--portfolio-accent);
+    border: 1.5px solid var(--portfolio-accent);
   }
 
-  .btn-apple-secondary:hover {
-    background: var(--apple-blue);
+  .btn-secondary:hover {
+    background: var(--portfolio-accent);
     color: white;
   }
 }
 
-/* Apple 风格滚动动画 - 微妙优雅 */
+/* 优雅的滚动动画 */
 [data-reveal] {
   opacity: 0;
   transform: translateY(20px);
   transition:
-    opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-    transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out;
 }
 
 [data-reveal].is-visible {
@@ -119,22 +115,20 @@
   min-height: 100vh;
 }
 
-/* Apple 风格滚动条 - 简洁精致 */
+/* 个人作品集滚动条 - 简洁精致 */
 body::-webkit-scrollbar {
   width: 8px;
 }
 
 body::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.15);
   border-radius: 4px;
 }
 
 body::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.25);
 }
 
 body::-webkit-scrollbar-track {
   background: transparent;
 }
-
-/* 移除鼠标光标效果 - Apple 不使用这种装饰 */
