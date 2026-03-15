@@ -1,94 +1,90 @@
 import { motion } from 'framer-motion'
-import { Briefcase, MessageSquare, Sparkles } from 'lucide-react'
+import { Building2, FileText, Flag, Sparkles } from 'lucide-react'
 
-const icons = {
-  0: Briefcase,
-  1: MessageSquare,
-  2: Sparkles,
-}
+const steps = [
+  { number: '01', title: '进入现场', desc: '参与军工、消费电子等项目，理解真实业务痛点与场景边界' },
+  { number: '02', title: '承接需求', desc: '从客户问题中提取需求，整理为可执行方案与推进路径' },
+  { number: '03', title: '借助 AI 提效', desc: '搭建 AI 助手与知识沉淀机制，推动内容输出效率提升' },
+]
 
-const strengths = [
-  {
-    title: '业务现场经验',
-    description:
-      '我的产品感来自一线项目。客户不会先给清晰需求，我是在交付、培训和问题闭环里学会如何把模糊诉求变成可执行方案',
-  },
-  {
-    title: '清晰表达能力',
-    description:
-      '无论是企业培训、售前演示还是校企课程，我都持续承担 PPT 编写、讲解和资料沉淀，这让我更在意用户是否真的听懂、学会、用起来',
-  },
-  {
-    title: 'AI 实效应用',
-    description:
-      '我更关心它能不能节省团队时间、减少重复劳动、帮助需求更快进入"可讨论、可验证"的状态，而不是只做一个漂亮 demo',
-  },
+const abilities = [
+  { icon: Building2, title: '真实场景理解', subtitle: '军工 / 消费电子 / 工业 / 快消', desc: '快速识别业务痛点、场景边界与交付重点', highlight: false },
+  { icon: FileText, title: '需求转译能力', subtitle: '从客户问题中抽取需求', desc: '整理为可执行方案、文档和推进路径', highlight: false },
+  { icon: Flag, title: '交付与培训闭环', subtitle: '10+ 项目与培训支持', desc: '把功能讲清楚、教会用户、推动落地', highlight: false },
+  { icon: Sparkles, title: 'AI 工具辅助提效', subtitle: '搭建 AI 助手与知识沉淀机制', desc: '推动输出效率提升 80%+', highlight: true },
 ]
 
 export function About() {
   return (
-    <section id="statement" className="relative py-16 px-6 bg-slate-50" aria-labelledby="about-heading">
-      <div className="max-w-4xl mx-auto">
-        {/* 标题 */}
-        <div className="mb-10">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-3" id="about-heading">
-            把零散经验压成清晰路径
+    <section id="about" className="relative min-h-screen flex items-center py-20 px-6 bg-[#fafafa]" aria-labelledby="about-heading">
+      <div className="max-w-5xl mx-auto w-full">
+        <motion.div
+          className="text-center mb-10"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, margin: '-60px' }}
+          transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+        >
+          <div className="text-brand-500 text-[11px] font-medium tracking-widest uppercase mb-3">About</div>
+          <h2 className="text-[28px] md:text-[36px] font-bold text-slate-900 tracking-tight mb-3" id="about-heading">
+            从业务现场，到方案落地
           </h2>
-          <p className="text-lg text-slate-600">
-            我更擅长的，不是写一份漂亮简历，而是在业务现场中提炼可复用的产品方法论
+          <p className="text-[13px] text-slate-400 max-w-lg mx-auto leading-relaxed">
+            过去 1 年多，我持续在真实客户场景中完成问题收集、需求整理、文档沉淀、用户培训与交付推进，逐步形成从问题识别到方案落地的完整闭环。
           </p>
-        </div>
+        </motion.div>
 
-        {/* 优势列表 */}
-        <div className="space-y-5">
-          {strengths.map((strength, index) => {
-            const Icon = icons[index]
-            return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-50px' }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group bg-white rounded-xl p-6 border-2 border-slate-200 hover:border-cyan-300 hover:shadow-md transition-all duration-300"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center text-white">
-                    <Icon className="w-6 h-6" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-cyan-600 transition-colors">
-                      {strength.title}
-                    </h3>
-                    <p className="text-sm text-slate-600 leading-relaxed">
-                      {strength.description}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            )
-          })}
-        </div>
-
-        {/* 工作流程 */}
-        <div className="mt-10 bg-white rounded-xl p-6 border border-slate-200">
-          <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
-            <div className="w-1 h-5 bg-gradient-to-b from-cyan-500 to-blue-500 rounded-full" />
-            工作流程
-          </h3>
-          <div className="flex flex-wrap items-center gap-3">
-            {['业务现场', '结构化需求', 'AI 快速验证', '可复用资产'].map((step, index, arr) => (
-              <div key={index} className="flex items-center gap-3">
-                <div className="px-4 py-2 bg-cyan-50 border border-cyan-200 text-cyan-700 rounded-lg font-medium text-sm">
-                  {step}
-                </div>
-                {index < arr.length - 1 && (
-                  <div className="text-cyan-600 font-bold">→</div>
-                )}
+        <div className="grid md:grid-cols-3 gap-4 mb-8">
+          {steps.map((step, index) => (
+            <motion.div
+              key={step.number}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, margin: '-40px' }}
+              transition={{ duration: 0.5, delay: index * 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+              className="bg-white rounded-2xl p-5 border border-slate-100 hover:shadow-[0_8px_30px_-10px_rgba(0,0,0,0.08)] transition-all duration-500"
+            >
+              <div className="w-8 h-8 rounded-full bg-brand-500 text-white text-[11px] font-bold flex items-center justify-center mb-4">
+                {step.number}
               </div>
-            ))}
-          </div>
+              <h3 className="text-[14px] font-semibold text-slate-900 mb-1.5">{step.title}</h3>
+              <p className="text-[12px] text-slate-400 leading-relaxed">{step.desc}</p>
+            </motion.div>
+          ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, margin: '-40px' }}
+          transition={{ duration: 0.5 }}
+        >
+          <div className="text-center mb-5">
+            <span className="text-[12px] font-medium text-slate-400 tracking-wide">能力闭环</span>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            {abilities.map((item, index) => {
+              const Icon = item.icon
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: false, margin: '-40px' }}
+                  transition={{ duration: 0.4, delay: index * 0.08 }}
+                  className={`rounded-2xl p-4 border transition-all duration-500 hover:shadow-[0_8px_30px_-10px_rgba(0,0,0,0.06)] ${
+                    item.highlight ? 'bg-brand-50/50 border-brand-100' : 'bg-white border-slate-100'
+                  }`}
+                >
+                  <Icon className={`w-4 h-4 mb-3 ${item.highlight ? 'text-brand-500' : 'text-slate-300'}`} />
+                  <h4 className="text-[12px] font-semibold text-slate-900 mb-0.5">{item.title}</h4>
+                  <div className={`text-[11px] mb-1.5 ${item.highlight ? 'text-brand-500' : 'text-slate-400'}`}>{item.subtitle}</div>
+                  <p className="text-[11px] text-slate-400 leading-relaxed">{item.desc}</p>
+                </motion.div>
+              )
+            })}
+          </div>
+        </motion.div>
       </div>
     </section>
   )

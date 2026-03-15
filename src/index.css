@@ -1,25 +1,23 @@
-/* 个人作品集风格全局样式 - 性能优化版 */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --portfolio-accent: #0891B2;
+    --brand: #1fa37a;
+    --brand-light: #ecfdf5;
+    --dark-bg: #0f172a;
     color-scheme: light;
   }
 
   html {
     scroll-behavior: smooth;
+    scroll-snap-type: y proximity;
   }
 
   @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
-    }
-    *,
-    *::before,
-    *::after {
+    html { scroll-behavior: auto; scroll-snap-type: none; }
+    *, *::before, *::after {
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
@@ -27,77 +25,75 @@
   }
 
   body {
-    @apply m-0 min-h-screen font-sans antialiased bg-white text-slate-900;
+    @apply m-0 min-h-screen antialiased bg-white text-slate-900;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: -0.01em;
   }
 
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
+  a { color: inherit; text-decoration: none; }
 
-  a:focus-visible,
-  button:focus-visible {
-    outline: 2px solid var(--portfolio-accent);
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--brand);
     outline-offset: 3px;
     border-radius: 6px;
   }
 
-  * {
-    box-sizing: border-box;
-  }
+  * { box-sizing: border-box; }
 
   ::selection {
-    background: rgba(8, 145, 178, 0.15);
+    background: rgba(31, 163, 122, 0.12);
     color: inherit;
+  }
+
+  section, footer {
+    scroll-snap-align: start;
   }
 }
 
 @layer components {
-  /* 简化按钮样式 */
   .btn-primary {
-    @apply inline-flex items-center justify-center px-5 py-2.5 rounded-lg font-medium transition-all duration-200;
-    background: linear-gradient(135deg, #0891B2 0%, #06B6D4 100%);
-    color: white;
-    box-shadow: 0 2px 8px rgba(8, 145, 178, 0.2);
+    @apply inline-flex items-center justify-center px-5 py-2.5 rounded-full font-medium transition-all duration-300 text-white text-sm;
+    background: var(--brand);
   }
-
   .btn-primary:hover {
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(8, 145, 178, 0.3);
+    box-shadow: 0 6px 20px rgba(31, 163, 122, 0.25);
+    filter: brightness(1.05);
   }
 
-  .btn-secondary {
-    @apply inline-flex items-center justify-center px-5 py-2.5 rounded-lg font-medium transition-all duration-200;
-    background: transparent;
-    color: var(--portfolio-accent);
-    border: 2px solid var(--portfolio-accent);
+  .btn-outline {
+    @apply inline-flex items-center justify-center px-5 py-2.5 rounded-full font-medium transition-all duration-300 text-sm;
+    color: var(--brand);
+    border: 1.5px solid var(--brand);
   }
-
-  .btn-secondary:hover {
-    background: var(--portfolio-accent);
+  .btn-outline:hover {
+    background: var(--brand);
     color: white;
   }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center px-5 py-2.5 rounded-full font-medium transition-all duration-300 text-sm;
+    color: #64748b;
+    background: #f1f5f9;
+  }
+  .btn-ghost:hover {
+    background: #e2e8f0;
+    color: #334155;
+  }
+
+  .glass {
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+  }
 }
 
-#root {
-  min-height: 100vh;
-}
+#root { min-height: 100vh; }
 
-/* 简化滚动条 */
-body::-webkit-scrollbar {
-  width: 8px;
-}
-
-body::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.15);
-  border-radius: 4px;
-}
-
-body::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.25);
-}
-
-body::-webkit-scrollbar-track {
-  background: transparent;
-}
+body::-webkit-scrollbar { width: 6px; }
+body::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.12); border-radius: 3px; }
+body::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.2); }
+body::-webkit-scrollbar-track { background: transparent; }

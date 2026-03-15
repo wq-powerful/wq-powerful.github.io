@@ -1,100 +1,94 @@
 import { motion } from 'framer-motion'
-import { ArrowRight, Mail, Sparkles } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 
-const profilePhoto = '/assets/profile-photo.jpg'
+const heroPhoto = '/assets/zp1.jpg'
+
+const pipelineSteps = ['客户现场', '需求整理', '方案表达', '培训赋能', '交付闭环', 'AI 提效']
 
 export function Hero() {
   return (
-    <section className="relative min-h-[85vh] flex items-center px-6 py-16 bg-gradient-to-br from-slate-50 via-white to-cyan-50" aria-label="个人简介">
-      {/* 简化背景 - 只保留微妙的渐变 */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(6,182,212,0.08),transparent_50%),radial-gradient(circle_at_70%_80%,rgba(8,145,178,0.06),transparent_50%)] pointer-events-none" />
-
-      <div className="max-w-6xl mx-auto w-full relative z-10">
-        <div className="grid lg:grid-cols-[1.2fr,1fr] gap-8 lg:gap-12 items-center">
-          {/* 左侧：个人介绍 */}
+    <section id="top" className="relative min-h-screen flex items-center px-6 pt-11 bg-white" aria-label="个人简介">
+      <div className="max-w-5xl mx-auto w-full">
+        <div className="grid lg:grid-cols-[1.1fr,0.9fr] gap-16 items-center">
+          {/* 左侧 */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
           >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.1, duration: 0.4 }}
-              className="inline-flex items-center gap-2 px-3 py-1.5 bg-cyan-50 border border-cyan-200 text-cyan-700 rounded-full text-sm font-medium mb-4"
-            >
-              <Sparkles className="w-3.5 h-3.5" />
-              AI 产品经理候选人
-            </motion.div>
-
-            <h1 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-4 leading-tight">
-              你好，我是<span className="text-cyan-600">吴倩</span>
+            <h1 className="text-[42px] lg:text-[52px] font-bold text-slate-900 leading-[1.1] tracking-tight">
+              把业务问题
+            </h1>
+            <h1 className="text-[42px] lg:text-[52px] font-bold text-brand-500 leading-[1.1] tracking-tight mb-8">
+              变成可落地的 AI 方案
             </h1>
 
-            <p className="text-lg text-slate-600 mb-3 leading-relaxed">
-              更接近业务现场的 AI 产品经理
+            <p className="text-[15px] text-slate-400 mb-8 leading-[1.7] max-w-md">
+              具备工业软件与企业数字化项目经验，能够从真实业务场景出发，完成需求拆解、方案验证与交付落地。
             </p>
 
-            <p className="text-base text-slate-500 mb-6 leading-relaxed">
-              我把交付现场、需求整理、培训赋能和 AI 提效实践，压缩成这个产品化的表达。
-            </p>
-
-            <div className="flex flex-wrap gap-3 mb-6">
-              <a href="#work" className="btn-primary group">
-                查看项目案例
-                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-              </a>
-              <a href="#contact" className="btn-secondary group">
-                <Mail className="w-4 h-4 mr-2" />
-                联系我
-              </a>
+            <div className="flex flex-wrap gap-2 mb-8">
+              {['需求拆解', 'AI 验证', '交付落地'].map((tag) => (
+                <span key={tag} className="px-4 py-1.5 bg-slate-50 text-slate-500 text-[13px] rounded-full border border-slate-100">
+                  {tag}
+                </span>
+              ))}
             </div>
 
-            {/* 数据展示 */}
-            <div className="flex gap-6 pt-4 border-t border-slate-200">
-              {[
-                { value: '1+年', label: '产品经验' },
-                { value: '6个', label: '交付项目' },
-                { value: '200-500W', label: '项目规模' },
-              ].map((stat, index) => (
-                <div key={index} className="group">
-                  <div className="text-lg font-bold text-slate-900 mb-0.5">
-                    {stat.value}
-                  </div>
-                  <div className="text-sm text-slate-500">{stat.label}</div>
-                </div>
+            <div className="flex flex-wrap items-center gap-3 mb-10">
+              <a href="#cases" className="btn-primary group">
+                查看重点案例
+                <ArrowRight className="w-3.5 h-3.5 ml-2 group-hover:translate-x-0.5 transition-transform" />
+              </a>
+              <a href="#contact" className="btn-outline">联系我</a>
+            </div>
+
+            <div className="flex items-center text-[13px] text-slate-400 divide-x divide-slate-200">
+              {['1年+ 项目交付', '6个重点项目', '3+ 行业场景', '80%+ 输出提效'].map((item, i) => (
+                <span key={i} className="px-4 first:pl-0">{item}</span>
               ))}
             </div>
           </motion.div>
 
-          {/* 右侧：个人照片 - 优化尺寸 */}
+          {/* 右侧 */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.15, ease: [0.25, 0.1, 0.25, 1] }}
+            className="flex flex-col items-center gap-6"
           >
-            <div className="relative rounded-2xl overflow-hidden shadow-xl max-w-sm mx-auto lg:max-w-none">
+            <div className="relative w-60 h-72 rounded-3xl overflow-hidden shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)]">
               <img
-                src={profilePhoto}
-                alt="吴倩个人照片 - AI 产品经理"
+                src={heroPhoto}
+                alt="吴倩个人照片"
                 loading="eager"
                 fetchpriority="high"
-                width="400"
-                height="533"
-                className="w-full aspect-[3/4] object-cover"
+                width="240"
+                height="288"
+                className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent" aria-hidden="true" />
+              <div className="absolute inset-0 rounded-3xl ring-1 ring-inset ring-black/5" />
             </div>
 
-            {/* 个人标签 */}
-            <div className="absolute -bottom-3 left-4 right-4 bg-white/95 backdrop-blur-sm px-4 py-3 rounded-xl shadow-lg border border-slate-200">
-              <div className="flex items-center justify-between">
-                <div>
-                  <div className="font-semibold text-slate-900 text-sm">吴倩 Olivia Wu</div>
-                  <div className="text-xs text-slate-500">Thoughtworks 2026</div>
-                </div>
-                <div className="w-2 h-2 bg-cyan-500 rounded-full animate-pulse" />
+            {/* 工作流 — 环形标签云 */}
+            <div className="w-full max-w-[300px]">
+              <div className="relative flex flex-wrap justify-center gap-x-3 gap-y-2.5">
+                {pipelineSteps.map((step, i) => (
+                  <motion.div
+                    key={step}
+                    initial={{ opacity: 0, scale: 0.85 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.45, delay: 0.5 + i * 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+                  >
+                    <div className={`px-3.5 py-1.5 rounded-full text-[11px] font-medium border cursor-default transition-all duration-300 hover:shadow-[0_2px_12px_-3px_rgba(31,163,122,0.2)] hover:bg-brand-50 hover:text-brand-600 hover:border-brand-200 ${
+                      i === pipelineSteps.length - 1
+                        ? 'bg-brand-50 text-brand-600 border-brand-200'
+                        : 'bg-white text-slate-500 border-slate-150 shadow-[0_1px_3px_rgba(0,0,0,0.04)]'
+                    }`}>
+                      {step}
+                    </div>
+                  </motion.div>
+                ))}
               </div>
             </div>
           </motion.div>

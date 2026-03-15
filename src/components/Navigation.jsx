@@ -1,21 +1,25 @@
-import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
 
 const navigation = [
-  { id: 'statement', label: '我是谁' },
-  { id: 'work', label: '案例' },
+  { id: 'top', label: '首页' },
+  { id: 'about', label: '关于' },
+  { id: 'why-me', label: '优势' },
+  { id: 'cases', label: '项目' },
   { id: 'method', label: '方法' },
+  { id: 'expression', label: '赋能' },
+  { id: 'ai-homework', label: 'AI' },
   { id: 'contact', label: '联系' },
 ]
 
 export function Navigation() {
-  const [activeSection, setActiveSection] = useState('')
+  const [activeSection, setActiveSection] = useState('top')
+  const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
+      setScrolled(window.scrollY > 20)
       const sections = navigation.map(item => document.getElementById(item.id))
-      const scrollPosition = window.scrollY + 100
-
+      const scrollPosition = window.scrollY + 120
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = sections[i]
         if (section && section.offsetTop <= scrollPosition) {
@@ -24,57 +28,39 @@ export function Navigation() {
         }
       }
     }
-
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled ? 'glass border-b border-slate-200/50' : ''
+      }`}
       role="banner"
     >
-      <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
-        {/* Logo */}
-        <a
-          href="#top"
-          className="text-base font-semibold text-slate-900 hover:text-cyan-600 transition-colors"
-          aria-label="返回顶部"
-        >
-          吴倩 · Olivia Wu
+      <div className="max-w-5xl mx-auto px-6 h-11 flex items-center justify-between">
+        <a href="#top" className="text-[13px] font-semibold text-slate-900 tracking-tight hover:opacity-70 transition-opacity">
+          吴倩
         </a>
 
-        {/* 导航 */}
-        <nav className="hidden md:flex items-center gap-6" role="navigation" aria-label="主导航">
+        <nav className="hidden md:flex items-center gap-0.5" role="navigation" aria-label="主导航">
           {navigation.map((item) => (
             <a
               key={item.id}
               href={`#${item.id}`}
-              className={`relative text-sm transition-colors ${
+              className={`px-2.5 py-1 rounded-full text-[12px] transition-all duration-300 ${
                 activeSection === item.id
-                  ? 'text-cyan-600 font-medium'
-                  : 'text-slate-600 hover:text-slate-900'
+                  ? 'text-slate-900 font-medium'
+                  : 'text-slate-400 hover:text-slate-600'
               }`}
-              aria-label={`跳转到${item.label}部分`}
             >
               {item.label}
-              {activeSection === item.id && (
-                <motion.div
-                  layoutId="activeNav"
-                  className="absolute -bottom-1 left-0 right-0 h-0.5 bg-cyan-600"
-                  transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                />
-              )}
             </a>
           ))}
         </nav>
 
-        {/* CTA 按钮 */}
-        <a
-          href="#contact"
-          className="px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-sm font-medium rounded-lg hover:shadow-md transition-all duration-200"
-          aria-label="联系我"
-        >
+        <a href="#contact" className="px-3.5 py-1 bg-slate-900 text-white text-[11px] font-medium rounded-full hover:bg-slate-700 transition-colors">
           联系我
         </a>
       </div>

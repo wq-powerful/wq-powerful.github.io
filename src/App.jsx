@@ -2,8 +2,11 @@ import { useEffect } from 'react'
 import { Navigation } from './components/Navigation'
 import { Hero } from './components/Hero'
 import { About } from './components/About'
+import { WhyMe } from './components/WhyMe'
 import { Cases } from './components/Cases'
 import { Method } from './components/Method'
+import { Expression } from './components/Expression'
+import { AIHomework } from './components/AIHomework'
 import { Contact } from './components/Contact'
 
 function useReveal() {
@@ -20,9 +23,7 @@ function useReveal() {
       },
       { threshold: 0.25, rootMargin: '0px 0px -100px 0px' },
     )
-
     nodes.forEach((node) => observer.observe(node))
-
     return () => observer.disconnect()
   }, [])
 }
@@ -31,19 +32,17 @@ function App() {
   useReveal()
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-apple-white">
-      {/* Apple 风格导航栏 */}
+    <div className="relative min-h-screen overflow-x-hidden bg-white">
       <Navigation />
-
-      {/* 主要内容 */}
-      <main id="top" className="pt-16">
+      <main>
         <Hero />
         <About />
+        <WhyMe />
         <Cases />
         <Method />
+        <Expression />
+        <AIHomework />
       </main>
-
-      {/* 联系方式 */}
       <Contact />
     </div>
   )
