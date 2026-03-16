@@ -25,14 +25,14 @@ const highlights = [
 
 export function Expression() {
   return (
-    <section id="expression" className="relative min-h-screen flex items-center py-16 sm:py-20 xl:py-32 px-4 sm:px-6 xl:px-8 bg-[#fafafa] overflow-hidden" aria-labelledby="expression-heading">
+    <section id="expression" className="relative min-h-screen flex items-center py-16 sm:py-16 xl:py-16 px-4 sm:px-6 xl:px-8 bg-[#fafafa] overflow-hidden" aria-labelledby="expression-heading">
       {/* 背景装饰 */}
       <div className="absolute top-0 right-0 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-brand-500/[0.03] rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3" />
       <div className="absolute bottom-0 left-0 w-[250px] sm:w-[400px] h-[250px] sm:h-[400px] bg-brand-500/[0.02] rounded-full blur-[100px] translate-y-1/2 -translate-x-1/3" />
 
       <div className="max-w-5xl xl:max-w-6xl 2xl:max-w-7xl 3xl:max-w-8xl mx-auto w-full relative">
         <motion.div
-          className="text-center mb-10 sm:mb-16"
+          className="text-center mb-6 sm:mb-8 xl:mb-10"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, margin: '-60px' }}
@@ -51,7 +51,7 @@ export function Expression() {
         </motion.div>
 
         {/* 主卡片区 */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 xl:gap-7 mb-8 sm:mb-10 xl:mb-14">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 xl:gap-7 mb-6 sm:mb-8 xl:mb-8">
           {cards.map((item, index) => {
             const Icon = item.icon
             return (
@@ -67,7 +67,7 @@ export function Expression() {
                 {/* 顶部渐变条 */}
                 <div className={`h-1 bg-gradient-to-r ${item.accent}`} />
 
-                <div className="p-5 sm:p-6 xl:p-8">
+                <div className="p-5 sm:p-5 xl:p-6">
                   <div className="flex items-center gap-3 xl:gap-4 mb-3 sm:mb-4">
                     <div className="w-10 h-10 sm:w-11 sm:h-11 xl:w-13 xl:h-13 rounded-2xl bg-brand-50 border border-brand-100 flex items-center justify-center text-brand-500 group-hover:scale-110 transition-transform duration-300">
                       <Icon className="w-4 h-4 sm:w-5 sm:h-5 xl:w-6 xl:h-6" />

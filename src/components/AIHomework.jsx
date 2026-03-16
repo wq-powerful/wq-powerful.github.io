@@ -36,7 +36,7 @@ const steps = [
 
 export function AIHomework() {
   return (
-    <section id="ai-homework" className="relative min-h-screen flex items-center py-16 sm:py-20 xl:py-32 px-4 sm:px-6 xl:px-8 bg-white overflow-hidden" aria-labelledby="ai-hw-heading">
+    <section id="ai-homework" className="relative min-h-screen flex items-center py-16 sm:py-16 xl:py-16 px-4 sm:px-6 xl:px-8 bg-white overflow-hidden" aria-labelledby="ai-hw-heading">
       {/* 背景装饰 */}
       <div className="absolute top-1/4 left-0 w-[600px] h-[600px] bg-brand-500/[0.02] rounded-full blur-[120px] -translate-x-1/2" />
 
@@ -58,7 +58,7 @@ export function AIHomework() {
         </motion.div>
 
         {/* 步骤卡片 — 响应式网格 */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-4 xl:gap-5 mb-8 sm:mb-10 xl:mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-4 xl:gap-5 mb-6 sm:mb-8 xl:mb-8">
           {steps.map((step, index) => {
             const Icon = step.icon
             return (
