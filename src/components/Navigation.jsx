@@ -39,17 +39,17 @@ export function Navigation() {
       }`}
       role="banner"
     >
-      <div className="max-w-5xl mx-auto px-6 h-11 flex items-center justify-between">
-        <a href="#top" className="text-[13px] font-semibold text-slate-900 tracking-tight hover:opacity-70 transition-opacity">
+      <div className="max-w-5xl xl:max-w-6xl 2xl:max-w-7xl 3xl:max-w-8xl mx-auto px-6 xl:px-8 h-11 xl:h-14 2xl:h-16 flex items-center justify-between">
+        <a href="#top" className="text-[13px] xl:text-base 2xl:text-lg font-semibold text-slate-900 tracking-tight hover:opacity-70 transition-opacity">
           吴倩
         </a>
 
-        <nav className="hidden md:flex items-center gap-0.5" role="navigation" aria-label="主导航">
+        <nav className="hidden md:flex items-center gap-0.5 xl:gap-1" role="navigation" aria-label="主导航">
           {navigation.map((item) => (
             <a
               key={item.id}
               href={`#${item.id}`}
-              className={`px-2.5 py-1 rounded-full text-[12px] transition-all duration-300 ${
+              className={`px-2.5 xl:px-3.5 py-1 xl:py-1.5 rounded-full text-[12px] xl:text-sm 2xl:text-base transition-all duration-300 ${
                 activeSection === item.id
                   ? 'text-slate-900 font-medium'
                   : 'text-slate-400 hover:text-slate-600'
@@ -60,7 +60,7 @@ export function Navigation() {
           ))}
         </nav>
 
-        <a href="#contact" className="px-3.5 py-1 bg-slate-900 text-white text-[11px] font-medium rounded-full hover:bg-slate-700 transition-colors">
+        <a href="#contact" className="px-3.5 xl:px-5 py-1 xl:py-1.5 2xl:py-2 bg-slate-900 text-white text-[11px] xl:text-sm 2xl:text-base font-medium rounded-full hover:bg-slate-700 transition-colors">
           联系我
         </a>
       </div>

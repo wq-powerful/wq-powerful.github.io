@@ -84,6 +84,18 @@
     color: #334155;
   }
 
+  /* 大屏幕按钮尺寸适配 */
+  @media (min-width: 1280px) {
+    .btn-primary, .btn-outline, .btn-ghost {
+      @apply px-7 py-3 text-base;
+    }
+  }
+  @media (min-width: 1536px) {
+    .btn-primary, .btn-outline, .btn-ghost {
+      @apply px-8 py-3.5 text-lg;
+    }
+  }
+
   .glass {
     background: rgba(255, 255, 255, 0.72);
     backdrop-filter: blur(20px) saturate(180%);

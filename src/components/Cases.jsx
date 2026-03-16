@@ -38,31 +38,31 @@ export function Cases() {
   const ActiveIcon = p.icon
 
   return (
-    <section id="cases" className="relative min-h-screen flex items-center py-20 px-6 bg-[#fafafa]" aria-labelledby="cases-heading">
-      <div className="max-w-5xl mx-auto w-full">
+    <section id="cases" className="relative min-h-screen flex items-center py-20 xl:py-28 px-6 xl:px-8 bg-[#fafafa]" aria-labelledby="cases-heading">
+      <div className="max-w-5xl xl:max-w-6xl 2xl:max-w-7xl 3xl:max-w-8xl mx-auto w-full">
         {/* 标题 */}
         <motion.div className="text-center mb-8" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false }} transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}>
-          <div className="text-brand-500 text-[11px] font-medium tracking-widest uppercase mb-3">Projects</div>
-          <h2 className="text-[28px] md:text-[36px] font-bold text-slate-900 tracking-tight mb-3" id="cases-heading">重点项目</h2>
-          <p className="text-[13px] text-slate-400 max-w-md mx-auto">以下案例展示了我如何把复杂业务问题转化为可推进的方案，并在真实项目中完成落地。</p>
+          <div className="text-brand-500 text-[11px] xl:text-xs 2xl:text-sm font-medium tracking-widest uppercase mb-3">Projects</div>
+          <h2 className="text-[28px] md:text-[36px] xl:text-[42px] 2xl:text-[48px] font-bold text-slate-900 tracking-tight mb-3 xl:mb-4" id="cases-heading">重点项目</h2>
+          <p className="text-[13px] xl:text-[15px] 2xl:text-base text-slate-400 max-w-md xl:max-w-lg mx-auto">以下案例展示了我如何把复杂业务问题转化为可推进的方案，并在真实项目中完成落地。</p>
         </motion.div>
 
         {/* Tab 导航 */}
-        <div className="flex justify-center gap-2.5 mb-7">
+        <div className="flex justify-center gap-2.5 xl:gap-3 mb-7 xl:mb-9">
           {projects.map((project, index) => {
             const Icon = project.icon
             return (
               <button
                 key={project.id}
                 onClick={() => setActiveTab(index)}
-                className={`group flex items-center gap-2 px-5 py-2.5 rounded-full transition-all duration-300 ${
+                className={`group flex items-center gap-2 px-5 xl:px-6 py-2.5 xl:py-3 rounded-full transition-all duration-300 ${
                   activeTab === index
                     ? 'bg-slate-900 text-white shadow-[0_2px_12px_-3px_rgba(0,0,0,0.2)]'
                     : 'bg-white text-slate-500 border border-slate-100 hover:border-slate-200 hover:text-slate-700'
                 }`}
               >
-                <Icon className="w-4 h-4" />
-                <span className="text-[13px] font-medium">{project.tab}</span>
+                <Icon className="w-4 h-4 xl:w-5 xl:h-5" />
+                <span className="text-[13px] xl:text-[15px] 2xl:text-base font-medium">{project.tab}</span>
               </button>
             )
           })}
@@ -78,20 +78,20 @@ export function Cases() {
             transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
             className="bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-[0_2px_24px_-8px_rgba(0,0,0,0.06)]"
           >
-            <div className="grid md:grid-cols-[1fr,190px]">
+            <div className="grid md:grid-cols-[1fr,190px] xl:grid-cols-[1fr,220px]">
               {/* 左侧 */}
-              <div className="p-6">
+              <div className="p-6 xl:p-8">
                 {/* 定位 + 标签 */}
                 <div className="flex items-start justify-between mb-2">
                   <div className="flex items-center gap-2.5">
                     <div className="w-8 h-8 rounded-xl bg-brand-50 flex items-center justify-center text-brand-500">
                       <ActiveIcon className="w-4 h-4" />
                     </div>
-                    <h3 className="text-[15px] font-bold text-slate-900">{p.positioning}</h3>
+                    <h3 className="text-[15px] xl:text-[17px] 2xl:text-lg font-bold text-slate-900">{p.positioning}</h3>
                   </div>
                   <div className="flex gap-1.5 flex-shrink-0 ml-4">
                     {p.tags.map((tag) => (
-                      <span key={tag} className="px-2.5 py-0.5 bg-[#fafafa] text-slate-400 text-[10px] font-medium rounded-full border border-slate-100">{tag}</span>
+                      <span key={tag} className="px-2.5 xl:px-3 py-0.5 xl:py-1 bg-[#fafafa] text-slate-400 text-[10px] xl:text-xs font-medium rounded-full border border-slate-100">{tag}</span>
                     ))}
                   </div>
                 </div>
@@ -107,9 +107,9 @@ export function Cases() {
                       initial={{ opacity: 0, x: -12 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.25, delay: i * 0.08 }}
-                      className="flex items-start gap-3 text-[13px] text-slate-600"
+                      className="flex items-start gap-3 text-[13px] xl:text-[15px] 2xl:text-base text-slate-600"
                     >
-                      <span className="flex-shrink-0 w-5 h-5 rounded-md bg-brand-500 text-white text-[10px] font-bold flex items-center justify-center mt-0.5">{i + 1}</span>
+                      <span className="flex-shrink-0 w-5 h-5 xl:w-6 xl:h-6 rounded-md bg-brand-500 text-white text-[10px] xl:text-xs font-bold flex items-center justify-center mt-0.5">{i + 1}</span>
                       <span className="leading-relaxed">{action}</span>
                     </motion.div>
                   ))}
@@ -117,13 +117,13 @@ export function Cases() {
 
                 {/* 底部引言 + 按钮 */}
                 <div className="flex items-center justify-between pt-4 border-t border-slate-100">
-                  <p className="text-[11px] text-slate-300 italic max-w-[55%]">"{p.quote}"</p>
+                  <p className="text-[11px] xl:text-[13px] 2xl:text-sm text-slate-300 italic max-w-[55%]">"{p.quote}"</p>
                   {p.hasResult && (
                     <a
                       href={p.resultUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-4 py-1.5 bg-slate-900 text-white text-[11px] font-medium rounded-full hover:bg-slate-700 transition-colors"
+                      className="inline-flex items-center gap-1.5 px-4 xl:px-5 py-1.5 xl:py-2 bg-slate-900 text-white text-[11px] xl:text-sm font-medium rounded-full hover:bg-slate-700 transition-colors"
                     >
                       查看成果 <ArrowRight className="w-3 h-3" />
                     </a>
@@ -132,7 +132,7 @@ export function Cases() {
               </div>
 
               {/* 右侧指标 */}
-              <div className="flex flex-col justify-center gap-5 px-5 py-6 border-l border-slate-100 bg-[#fafafa]/50">
+              <div className="flex flex-col justify-center gap-5 xl:gap-7 px-5 xl:px-7 py-6 xl:py-8 border-l border-slate-100 bg-[#fafafa]/50">
                 {p.metrics.map((m, i) => (
                   <motion.div
                     key={`${activeTab}-m-${i}`}
@@ -141,8 +141,8 @@ export function Cases() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.3, delay: 0.12 + i * 0.08 }}
                   >
-                    <div className="text-[22px] font-bold text-brand-500 tracking-tight leading-none">{m.value}</div>
-                    <div className="text-[10px] text-slate-400 mt-1">{m.label}</div>
+                    <div className="text-[22px] xl:text-[28px] 2xl:text-[32px] font-bold text-brand-500 tracking-tight leading-none">{m.value}</div>
+                    <div className="text-[10px] xl:text-xs 2xl:text-sm text-slate-400 mt-1">{m.label}</div>
                   </motion.div>
                 ))}
               </div>
